@@ -1,11 +1,14 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const axios = require('axios')
+const cors = require('cors')
 const app = express()
 
 //importing inner files
 const config = require('./config')
 const Joke = require('./models/jokeModel')
+
+app.use(cors()); //cors is used to allow request from enywhere
 
 app.get('/api/fetch-jokes', async (req, res) => {
     try {
@@ -35,7 +38,9 @@ app.get('/api/fetch-jokes', async (req, res) => {
     }
 });
 
-app.get('/api/joke', async (req, res) => {
+
+//get random joke
+app.get('/api/joke/random', async (req, res) => {
     try {
         //count jokes
         const count = await Joke.countDocuments();
@@ -45,14 +50,16 @@ app.get('/api/joke', async (req, res) => {
 
         //creating a randome for index
         const random = Math.floor(Math.random() * count);
-        //randomly chooses joke and takes the one after (randomJoke = joke[random + 1])
+        //randomly chooses joke 
         const randomJoke = await Joke.findOne().skip(random);
 
-        res.status(200).json({ randomJoke })
+        res.status(200).json(randomJoke)
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
+
+//-----IMPLEMENT POST METHOD FOR VOTING
 
 //connecting server to the database (MongoDB)
 mongoose.connect(config.databaseURL).then(() => {

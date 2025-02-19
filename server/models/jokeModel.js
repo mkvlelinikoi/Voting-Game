@@ -7,13 +7,13 @@ const jokeSchema = mongoose.Schema(
         answer: String,
         votes: [
             {
-                smileValue: Number,
+                smileValue: { type: Number, default: 0 }
             },
             {
-                likeValue: Number,
+                likeValue: { type: Number, default: 0 }
             },
             {
-                loveValue: Number,
+                loveValue: { type: Number, default: 0 }
             }
         ]
     },
