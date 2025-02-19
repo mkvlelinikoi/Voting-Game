@@ -7,6 +7,7 @@ const app = express()
 app.get('/api', (req, res) => {
 
 })
+
 //connecting server to the database (MongoDB)
 mongoose.connect(config.databaseURL).then(() => {
     console.log("Connected to MongoDB");
