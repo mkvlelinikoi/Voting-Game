@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const jokeSchema = mongoose.Schema(
     {
-        id: String,
+        id: Number,
         question: String,
         answer: String,
         votes: [
