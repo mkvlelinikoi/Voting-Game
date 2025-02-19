@@ -19,6 +19,13 @@ const jokeSchema = mongoose.Schema(
     },
     {
         timestamps: true,
+        defaults: {
+            votes: [
+                { smileValue: 0 },
+                { likeValue: 0 },
+                { loveValue: 0 }
+            ]
+        }
     }
 )
 
