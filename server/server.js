@@ -10,7 +10,7 @@ const Joke = require('./models/jokeModel')
 app.get('/api/fetch-jokes', async (req, res) => {
     try {
         //declaring amount of jokes
-        const count = 30;
+        const count = 20;
 
         const jokesToSave = [];
 
@@ -33,7 +33,26 @@ app.get('/api/fetch-jokes', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-})
+});
+
+app.get('/api/joke', async (req, res) => {
+    try {
+        //count jokes
+        const count = await Joke.countDocuments();
+        if (count === 0) {
+            return res.status(404).json({ message: "No jokes were found" });
+        }
+
+        //creating a randome for index
+        const random = Math.floor(Math.random() * count);
+        //randomly chooses joke and takes the one after (randomJoke = joke[random + 1])
+        const randomJoke = await Joke.findOne().skip(random);
+
+        res.status(200).json({ randomJoke })
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 //connecting server to the database (MongoDB)
 mongoose.connect(config.databaseURL).then(() => {
