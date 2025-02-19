@@ -10,3 +10,4 @@ React (for UI)
 
 # Backend
 Node.js / Express.js (server) MongoDB (database) Mongoose (for MongoDB interactions)
+It takes only 20 Jokes and adds them into the database
