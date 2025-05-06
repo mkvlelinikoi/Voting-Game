@@ -11,18 +11,3 @@ React (for UI)
 # Backend
 Node.js / Express.js (server) MongoDB (database) Mongoose (for MongoDB interactions)
 It takes only 20 Jokes and adds them into the database
-
-
-# ⚙️ Installation & Setup
-
-# 1️⃣ Clone the Repository
-git clone https://github.com/mkvlelinikoi/Voting-Game.git
-
-# 2️⃣ Replace the placeholders in .env file with actual values
-MONGODB_URI=your_mongodb_uri
-
-# 3️⃣ Run build command
-npm run build
-
-# 4️⃣ Run the application
-npm run start
