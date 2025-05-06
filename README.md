@@ -22,7 +22,6 @@ git clone https://github.com/mkvlelinikoi/Voting-Game.git
 MONGODB_URI=your_mongodb_uri
 
 # 3️⃣ Run build command
-#Installes node modules for both Backend and Frontend
 npm run build
 
 # 4️⃣ Run the application
